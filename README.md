@@ -5,4 +5,4 @@ Proyecto para el ramo de Taller de Ingeniería de Software.
 * Roberto Melita.
 * Javier Rojas.
 * Vera Schnepp.
-* Diego Vera.hele
+* Diego Vera.

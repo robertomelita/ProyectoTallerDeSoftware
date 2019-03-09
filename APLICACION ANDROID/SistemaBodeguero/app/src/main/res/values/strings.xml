@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">SistemaBodeguero</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="texto_boton_validar">Validar Producto</string>
+    <string name="nombre_producto">Nombre Producto</string>
+    <string name="cantidad">xC</string>
+    <string name="descripcion">Localizacion: Pasillo B, Estante 32, Repisa 2\nPeso: 2KG\nTamaño: 650cm X 50cm X 47cm\nStock: 8</string>
+    <string name="boton_menu">Lista de Productos</string>
+    <string name="boton_filtro">F</string>
+    <string name="solicitar_orden">Solicitar Orden</string>
+    <string name="terminar_orden">Terminar Orden</string>
+
+    <string name="title_activity_escaner_qr">EscanerQR</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="ingresar_manualmente">Ingresar codigo Manualmente</string>
+    <string name="codigo_del_producto_seleccionado">Codigo de producto a escanear:</string>
+</resources>

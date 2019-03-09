@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <script src="APIConnector.js"></script>
+    <script src="webApp.js"></script>
+    <script src="listaProductos/listaProductos.js"></script>
+   
+</head>
+<body style="padding: 5px;">
+    <div class="ui grid" style="height:100%" >
+        <div class="three wide column">
+          <div class="ui vertical fluid tabular menu">
+          <a class="teal active item" id="listaProductos" onclick="listaProductos()">
+            Productos
+          </a>
+          <a class="teal item" id = "usuarios" onclick="usuarios()">
+            Usuarios
+          </a>
+        </div>
+      </div>
+      <div class="ten wide stretched column">
+       <iframe class="ui segment" id="objetivo" src="listaProductos/listaProductos.html">
+        </iframe>
+      </div>
+      
+</body>
+</html>

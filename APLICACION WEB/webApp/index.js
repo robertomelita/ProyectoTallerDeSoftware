@@ -1,5 +1,5 @@
 var reader = new FileReader();
-UR='http://sistemanipon.ddns.net'
+UR='http://sistemanipon.ddns.net:5000'
 function Sesion() {
   
   var user=document.getElementById('user').value
@@ -10,7 +10,8 @@ function Sesion() {
   xhr.send()
   var json = JSON.parse(xhr.responseText);
   if (json['data'].toString()=="true"){
-    $( "#bad" ).load( "webApp.html #projects li" );
+//    $( "#bad" ).load( "webApp.html #projects li" );
+    window.location.replace("webApp.html")
   }
 }
 

@@ -17,4 +17,6 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="ingresar_manualmente">Ingresar codigo Manualmente</string>
     <string name="codigo_del_producto_seleccionado">Codigo de producto a escanear:</string>
+    <string name="n_de_orden">NÚMERO DE ORDEN</string>
+    <string name="cancelar_orden">CANCELAR ORDEN</string>
 </resources>

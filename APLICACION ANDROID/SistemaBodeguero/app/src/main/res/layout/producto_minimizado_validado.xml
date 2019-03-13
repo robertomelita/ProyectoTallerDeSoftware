@@ -2,15 +2,15 @@
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="70dp"
-    android:background="@color/colorAccent">
+    android:layout_height="40sp"
+    android:background="@color/colorPrimaryDark">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <ImageView
             android:id="@+id/miniatura_producto"
             android:layout_width="0dp"
-            android:layout_height="70sp"
+            android:layout_height="40sp"
             android:layout_weight="1"
             />
         <TextView
@@ -19,13 +19,14 @@
             android:layout_height="match_parent"
             android:layout_weight="4"
             android:text="@string/nombre_producto"
-            android:textSize="15sp"
+            android:textSize="12sp"
             android:gravity="center"/>
         <TextView
             android:id="@+id/cantidad_deseada"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:text="@string/cantidad"
             android:textSize="20sp"
             android:gravity="center"/>
     </LinearLayout>

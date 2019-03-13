@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
 /**
  * Clase que maneja la visualizacion del producto en el mapa.
@@ -14,7 +13,6 @@ public class Punto{
     private int x;
     private int y;
     private Context context = MainActivity.context;
-    private RelativeLayout relativeLayout;
 
     /**
      * @param x Posicion en X en el mapa.

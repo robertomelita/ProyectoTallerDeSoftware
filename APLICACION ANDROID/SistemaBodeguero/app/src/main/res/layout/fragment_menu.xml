@@ -17,9 +17,9 @@
             <Button
                 android:id="@+id/boton_obtener_orden"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="60sp"
                 android:text="@string/solicitar_orden"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
         </LinearLayout>
         <ExpandableListView
             android:id="@+id/expandable_list"

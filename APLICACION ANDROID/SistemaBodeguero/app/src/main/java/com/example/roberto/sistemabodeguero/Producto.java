@@ -27,6 +27,7 @@ public class Producto {
     private Punto punto;
     private String imagen;
     private Bitmap bitmap;
+    private boolean validado;
 
 
 
@@ -67,7 +68,6 @@ public class Producto {
             public void run() {
                 try {
                     bitmap = BitmapFactory.decodeStream((InputStream) new URL("http://sistemanipon.ddns.net/image/"+ imagen).getContent());
-                    Log.e("a","asd");
                 } catch (Exception e) {
                     e.printStackTrace();
                     bitmap = null;
@@ -88,6 +88,7 @@ public class Producto {
         punto = new Punto(x,y);
         this.setStock(stock);
         this.setImagen(imagen);
+        validado = false;
     }
 
     public String getCodigo() {
@@ -191,5 +192,12 @@ public class Producto {
 
     public void setBitmap(Bitmap bitmap) {
         this.bitmap = bitmap;
+    }
+    public boolean isValidado() {
+        return validado;
+    }
+
+    public void setValidado(boolean validado) {
+        this.validado = validado;
     }
 }

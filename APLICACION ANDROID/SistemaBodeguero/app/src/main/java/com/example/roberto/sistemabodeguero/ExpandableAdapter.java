@@ -2,9 +2,6 @@ package com.example.roberto.sistemabodeguero;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +10,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.io.InputStream;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -29,13 +24,15 @@ public class ExpandableAdapter extends BaseExpandableListAdapter {
     public Map<Producto,ArrayList<Producto>> listChild;
     private Context context;
     private Button botonValidar;
+    private ManejadorMapa callback;
 
     /**
      * @param context contexto del ActivityMain
      * @param listaProductos Lista de los productos Obtenida anteriormente
      */
-    public ExpandableAdapter( Context context, ArrayList<Producto> listaProductos) {
+    public ExpandableAdapter( Context context, ArrayList<Producto> listaProductos, ManejadorMapa callback) {
 
+        this.callback = callback;
         this.context = context;
         this.listaCategorias = listaProductos;
         this.listChild = new HashMap<>();
@@ -128,12 +125,16 @@ public class ExpandableAdapter extends BaseExpandableListAdapter {
      */
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
-        convertView = LayoutInflater.from(context).inflate(R.layout.producto_minimizado,null);
+        if(!listaCategorias.get(groupPosition).isValidado()) convertView = LayoutInflater.from(context).inflate(R.layout.producto_minimizado,null);
+        else convertView = LayoutInflater.from(context).inflate(R.layout.producto_minimizado_validado,null);
+
+        callback.onChange();
+
         TextView nombreProducto = convertView.findViewById(R.id.nombre_producto);
         TextView cantidadDeseada = convertView.findViewById(R.id.cantidad_deseada);
         nombreProducto.setText(listaCategorias.get(groupPosition).getNombreProducto());
         cantidadDeseada.setText(String.valueOf(listaCategorias.get(groupPosition).getCantidad()));
-        if(isExpanded) listaCategorias.get(groupPosition).getPunto().mostrarPunto();
+        /*if(isExpanded) listaCategorias.get(groupPosition).getPunto().mostrarPunto();*/
         return convertView;
     }
 
@@ -148,7 +149,11 @@ public class ExpandableAdapter extends BaseExpandableListAdapter {
      */
     @Override
     public View getChildView(final int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
-        convertView = LayoutInflater.from(context).inflate(R.layout.producto_maximizado,null);
+        if(!listaCategorias.get(groupPosition).isValidado()) convertView = LayoutInflater.from(context).inflate(R.layout.producto_maximizado_sin_validar,null);
+        else convertView = LayoutInflater.from(context).inflate(R.layout.producto_maximizado_validado,null);
+
+        callback.onChange();
+
         botonValidar = convertView.findViewById(R.id.boton_validar);
         TextView localizacion = convertView.findViewById(R.id.localizacion);
         TextView peso = convertView.findViewById(R.id.peso);
@@ -158,7 +163,9 @@ public class ExpandableAdapter extends BaseExpandableListAdapter {
         botonValidar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                context.startActivity(new Intent(context, EscanerQR.class).putExtra("codigo",listaCategorias.get(groupPosition).getCodigo()));
+                Intent intent = new Intent(context, EscanerQR.class).putExtra("codigo",listaCategorias.get(groupPosition).getCodigo());
+                intent.putExtra("posicion",String.valueOf(groupPosition));
+                context.startActivity(intent);
             }
         });
 
@@ -176,11 +183,11 @@ public class ExpandableAdapter extends BaseExpandableListAdapter {
 
 
         if(listaCategorias.get(groupPosition).getBitmap()!=null)imageView.setImageBitmap(listaCategorias.get(groupPosition).getBitmap());
-
+/*
         for (int i = 0; i < listaCategorias.size(); i++) {
             if (i != groupPosition) listaCategorias.get(i).getPunto().ocultarPunto();
         }
-
+*/
         return convertView;
     }
 
@@ -193,5 +200,13 @@ public class ExpandableAdapter extends BaseExpandableListAdapter {
     @Override
     public boolean isChildSelectable(int groupPosition, int childPosition) {
         return true;
+    }
+
+    public void vaciarExpandableListView(){
+        for (int i = 0; i < listaCategorias.size(); i++) {
+            listaCategorias.get(i).getPunto().ocultarPunto();
+        }
+        listaCategorias = new ArrayList<>();
+        listChild = new HashMap<>();
     }
 }

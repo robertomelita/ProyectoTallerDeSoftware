@@ -47,6 +47,8 @@ public class EscanerQR extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_escaner_qr);
 
+        MainActivity.validado = false;
+        MainActivity.activo =Integer.parseInt(getIntent().getStringExtra("posicion"));
         context = this;
         codigoProducto = getIntent().getStringExtra("codigo");
         cameraView = findViewById(R.id.camera_view);
@@ -97,7 +99,6 @@ public class EscanerQR extends AppCompatActivity {
                     try {
                         cameraSource.start(cameraView.getHolder());
                     } catch (IOException ie) {
-                        Log.e("CAMERA SOURCE", ie.getMessage());
                     }
                 }
             }
@@ -142,10 +143,8 @@ public class EscanerQR extends AppCompatActivity {
                                 // Stuff that updates the UI
                                 if(codigoProducto.equals(codigoEscaneado)){
                                     cuadroColor.setBackgroundColor(Color.GREEN);
-                                    Toast.makeText(context, "CODIGO VALIDADO",Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent();
-                                    intent.putExtra("message_return", "This data is returned when user click button in target activity.");
-                                    setResult(RESULT_OK, intent);
+                                    Toast.makeText(context, "CODIGO VALIDADO",Toast.LENGTH_LONG).show();
+                                    MainActivity.validado = true;
                                     finish();
                                 }
                                 else {
@@ -165,7 +164,6 @@ public class EscanerQR extends AppCompatActivity {
                                     }
                                 } catch (InterruptedException e) {
                                     // TODO Auto-generated catch block
-                                    Log.e("Error", "Waiting didnt work!!");
                                     e.printStackTrace();
                                 }
                             }

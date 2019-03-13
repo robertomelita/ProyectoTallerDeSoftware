@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/producto_maximizado"
+    android:background="@color/colorPrimaryDark">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/localizacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/peso"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/tamano"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/stock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/imagen_producto"
+            android:layout_width="300sp"
+            android:layout_height="200sp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_launcher_background" />
+
+        <Button
+            android:id="@+id/boton_validar"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:background="@color/colorAccent"
+            android:includeFontPadding="false"
+            android:layout_marginTop="2sp"
+            android:layout_marginBottom="5sp"
+            android:text="@string/texto_boton_validar" />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

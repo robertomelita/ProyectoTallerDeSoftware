@@ -1,6 +1,7 @@
 package com.example.roberto.sistemabodeguero;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -35,9 +36,7 @@ public class AsignadorOrden {
      * @param callback Callback para manejar procesos asincronos.
      */
     public void asignarOrden(final String url,final ServerCallback callback){
-//        final String[] codigoOrden = new String[1];
-//        final Orden[] orden = new Orden[1];
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url+"asignar_orden", null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url+"asignar_orden/190260860", null, new Response.Listener<JSONObject>() {
             String codigoOrden="";
             @Override
             public void onResponse(JSONObject response) {
@@ -47,17 +46,16 @@ public class AsignadorOrden {
                     callback.onSuccess();
                 } catch (JSONException e) {
                     e.printStackTrace();
+                    Toast.makeText(context, "ERROR! NO SE PUDO CONECTAR",Toast.LENGTH_LONG).show();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                Toast.makeText(context, "ERROR! NO SE PUDO CONECTAR",Toast.LENGTH_LONG).show();
 
             }
         });
-
         cola.add(request);
-
-       // return orden[0];
     }
 }
